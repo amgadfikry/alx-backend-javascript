@@ -221,3 +221,50 @@ The method property receives employeesList and returns the number of departments
   },
 };
 ```
+
+#### 100-createIteratorObject.js
+Write a function named createIteratorObject, that will take into argument a report Object created with the previous function createReportObject.
+
+This function will return an iterator to go through every employee in every department.
+```
+export default function createIteratorObject(report) {
+
+}
+```
+
+#### 101-iterateThroughObject.js
+Finally, write a function named iterateThroughObject. The function’s parameter reportWithIterator is the return value from createIteratorObject.
+```
+ export default function iterateThroughObject(reportWithIterator) {
+
+ }
+ ```
+It should return every employee name in a string, separated by |
+```
+{
+  allEmployees: {
+     engineering: [
+          'John Doe',
+          'Guillaume Salva',
+     ],
+  },
+  ...
+};
+```
+Should return John Doe | Guillaume Salva
+
+Reminder - the functions will be imported by the test suite.
+
+Full example:
+```
+> employees = {
+      ...createEmployeesObject('engineering', engineering),
+      ...createEmployeesObject('design', design),
+    };
+>
+> const report = createReportObject(employees);
+> const reportWithIterator = createIteratorObject(report);
+> iterateThroughObject(reportWithIterator)
+'John Doe | Guillaume Salva | Kanye East | Jay Li'
+> 
+```
