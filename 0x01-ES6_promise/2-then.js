@@ -5,6 +5,6 @@ export default function handleResponseFromAPI(promise) {
   })
     .catch((error) => { // eslint-disable-line no-unused-vars
       console.log('Got a response from the API');
-      return new Error({});
+      return Error({});
     });
 }
