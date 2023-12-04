@@ -4,5 +4,5 @@ export default function cleanSet(set, startString) {
   }
   const setFiltered = Array.from(set).filter((el) => (typeof el === 'string' && el.startsWith(startString)));
   const setRemoved = setFiltered.map((el) => el.slice(startString.length));
-  return setRemoved.join('-');
+  return setRemoved.filter((el) => el).join('-');
 }
