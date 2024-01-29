@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 const fs = require('fs/promises');
 
 async function countStudents(path) {
