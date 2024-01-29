@@ -1,10 +1,9 @@
 const fs = require('fs');
 
 async function countStudents(path) {
-  const prom = await fs.readFile(path, 'utf8', (err, data) => {
-    if (err) {
-      throw new Error('Cannot load the database');
-    }
+  try {
+    const data = await fs.readFileSync(path, 'utf8');
+
     const list = data.split('\n')
       .slice(1)
       .map((el) => el.split(','))
@@ -25,8 +24,10 @@ async function countStudents(path) {
     for (const [key, value] of Object.entries(uniqueObj)) {
       console.log(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
     }
-  });
-  return prom;
+    return data;
+  } catch (err) {
+    throw new Error('Cannot load the database');
+  }
 }
 
 module.exports = countStudents;
