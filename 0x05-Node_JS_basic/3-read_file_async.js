@@ -1,16 +1,15 @@
-// eslint-disable-next-line import/no-unresolved
-const fs = require('fs/promises');
+const fs = require('fs');
 
 async function countStudents(path) {
   try {
-    const data = await fs.readFile(path, 'utf8');
+    const data = await fs.readFileSync(path, 'utf8');
 
     const list = data.split('\n')
       .slice(1)
       .map((el) => el.split(','))
       .filter((el) => el.length > 1);
 
-    const result = [`Number of students: ${list.length}`];
+    console.log(`Number of students: ${list.length}`);
 
     const uniqueObj = {};
 
@@ -23,11 +22,9 @@ async function countStudents(path) {
     });
 
     for (const [key, value] of Object.entries(uniqueObj)) {
-      result.push(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
+      console.log(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
     }
-
-    console.log(result.join('\n'));
-    return result.join('\n');
+    return data;
   } catch (err) {
     throw new Error('Cannot load the database');
   }
