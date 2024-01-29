@@ -7,8 +7,7 @@ const app = http.createServer(async (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   if (path === '/') {
-    res.write('Hello Holberton School!');
-    res.end();
+    res.end('Hello Holberton School!');
   } else if (path === '/students') {
     const name = process.argv[2];
     try {
@@ -16,7 +15,7 @@ const app = http.createServer(async (req, res) => {
       data.unshift('This is the list of our students');
       res.end(data.join('\n'));
     } catch (err) {
-      res.end('Cannot load the database');
+      res.end(err.message);
     }
   }
 });
