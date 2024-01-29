@@ -9,7 +9,7 @@ async function countStudents(path) {
       .map((el) => el.split(','))
       .filter((el) => el.length > 1);
 
-    console.log(`Number of students: ${list.length}`);
+    const result = [`Number of students: ${list.length}`];
 
     const uniqueObj = {};
 
@@ -22,9 +22,11 @@ async function countStudents(path) {
     });
 
     for (const [key, value] of Object.entries(uniqueObj)) {
-      console.log(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
+      result.push(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
     }
-    return data;
+
+    console.log(result.join('\n'));
+    return result.join('\n');
   } catch (err) {
     throw new Error('Cannot load the database');
   }
