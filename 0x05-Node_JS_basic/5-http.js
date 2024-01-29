@@ -12,7 +12,7 @@ const app = http.createServer(async (req, res) => {
   } else if (path === '/students') {
     const name = process.argv[2];
     const data = await countStudents(name);
-    res.write('This is the list of our students\n');
+    data.unshift('This is the list of our students');
     res.end(data.join('\n'));
   }
 });
