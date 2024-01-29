@@ -11,9 +11,13 @@ const app = http.createServer(async (req, res) => {
     res.end();
   } else if (path === '/students') {
     const name = process.argv[2];
-    const data = await countStudents(name);
-    data.unshift('This is the list of our students');
-    res.end(data.join('\n'));
+    try {
+      const data = await countStudents(name);
+      data.unshift('This is the list of our students');
+      res.end(data.join('\n'));
+    } catch (err) {
+      res.end('Cannot load the database');
+    }
   }
 });
 
