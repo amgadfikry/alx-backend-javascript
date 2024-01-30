@@ -15,8 +15,7 @@ const app = http.createServer(async (req, res) => {
       data.unshift('This is the list of our students');
       res.end(data.join('\n'));
     } catch (err) {
-      res.statusCode = 500;
-      res.end(err.message);
+      res.end('This is the list of our students');
     }
   }
 });
