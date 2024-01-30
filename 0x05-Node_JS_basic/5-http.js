@@ -7,7 +7,7 @@ const app = http.createServer(async (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   if (path === '/') {
-    res.end('Hello Holberton School!');
+    res.end('Hello Holberton');
   } else if (path === '/students') {
     const name = process.argv[2];
     res.write('This is the list of our students');
