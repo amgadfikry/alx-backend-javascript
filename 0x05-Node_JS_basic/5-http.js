@@ -10,12 +10,12 @@ const app = http.createServer(async (req, res) => {
     res.end('Hello Holberton School!');
   } else if (path === '/students') {
     const name = process.argv[2];
+    res.write('This is the list of our students\n');
     try {
       const data = await countStudents(name);
-      data.unshift('This is the list of our students');
       res.end(data.join('\n'));
     } catch (err) {
-      res.end('This is the list of our students');
+      res.end();
     }
   }
 });
