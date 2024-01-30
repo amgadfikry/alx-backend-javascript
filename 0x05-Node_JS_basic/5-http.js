@@ -14,7 +14,7 @@ const app = http.createServer(async (req, res) => {
     try {
       const data = await countStudents(name);
       res.write('\n');
-      res.end(data.join('.'));
+      res.end(data.join('\n'));
     } catch (err) {
       res.end();
     }
