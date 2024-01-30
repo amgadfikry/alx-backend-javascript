@@ -7,14 +7,14 @@ const app = http.createServer(async (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   if (path === '/') {
-    res.end('Hello Holberton');
+    res.end('Hello Holberton School!');
   } else if (path === '/students') {
     const name = process.argv[2];
     res.write('This is the list of our students');
     try {
       const data = await countStudents(name);
       res.write('\n');
-      res.end(data.join('\n'));
+      res.end(data.join('.'));
     } catch (err) {
       res.end();
     }
